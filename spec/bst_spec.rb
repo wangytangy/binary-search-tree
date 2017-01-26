@@ -49,8 +49,8 @@ describe BinarySearchTree do
 
       describe 'with many insertions' do
         it 'inserts properly' do
-          [4,2,9,9,10].each do |n|
-            BinarySearchTree.insert!(node, n)
+          [4,2,9,9,10].each do |num|
+            BinarySearchTree.insert!(node, num)
           end
 
           expect(node.left.value).to be(4)
