@@ -35,11 +35,11 @@ class BinarySearchTree
   end
 
   def postorder
-
+    BinarySearchTree.postorder!(@root)
   end
 
   def preorder
-
+    BinarySearchTree.preorder!(@root)
   end
 
   def height
@@ -83,7 +83,12 @@ class BinarySearchTree
   end
 
   def self.preorder!(node)
+    return [] unless node
 
+    left = BinarySearchTree.preorder!(node.left)
+    right = BinarySearchTree.preorder!(node.right)
+
+    return [node.value] + left + right
   end
 
   def self.inorder!(node)
@@ -96,7 +101,12 @@ class BinarySearchTree
   end
 
   def self.postorder!(node)
+    return [] unless node
 
+    left = BinarySearchTree.postorder!(node.left)
+    right = BinarySearchTree.postorder!(node.right)
+
+    return left + right + [node.value]
   end
 
   def self.height!(node)
