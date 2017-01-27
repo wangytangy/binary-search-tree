@@ -214,17 +214,17 @@ describe BinarySearchTree do
       end
     end
 
-    describe '#preorder' do
-      it 'returns correctly ordered values' do
-        expect(tree.preorder).to eq(values)
-      end
-    end
-
-    describe '#postorder' do
-      it 'returns correctly ordered values' do
-        expect(tree.postorder).to eq([3, 2, 1, 7, 6, 5, 4])
-      end
-    end
+    # describe '#preorder' do
+    #   it 'returns correctly ordered values' do
+    #     expect(tree.preorder).to eq(values)
+    #   end
+    # end
+    #
+    # describe '#postorder' do
+    #   it 'returns correctly ordered values' do
+    #     expect(tree.postorder).to eq([3, 2, 1, 7, 6, 5, 4])
+    #   end
+    # end
 
     describe '#height' do
       it 'returns -1 for an empty tree' do
