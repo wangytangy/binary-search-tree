@@ -19,6 +19,7 @@ class BinarySearchTree
   def insert(value)
     if !@root
       @root = BSTNode.new(value)
+      return
     end
 
     BinarySearchTree.insert!(@root, value)
@@ -59,6 +60,7 @@ class BinarySearchTree
 
   def self.insert!(node, value)
     return BSTNode.new(value) if node.nil?
+
     if value <= node.value
       node.left = BinarySearchTree.insert!(node.left, value)
     elsif value > node.value
@@ -99,7 +101,13 @@ class BinarySearchTree
 
   def self.height!(node)
     return -1 unless node
-    1 + [BinarySearchTree.height!(node.left), BinarySearchTree.height!(node.right)].max
+    left_height = 1
+    right_height = 1
+
+    left_height += BinarySearchTree.height!(node.left)
+    right_height += BinarySearchTree.height!(node.right)
+
+    return [left_height, right_height].max
   end
 
   def self.max(node)
