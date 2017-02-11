@@ -9,6 +9,10 @@ class BSTNode
     @left = nil
     @right = nil
   end
+
+  def to_s
+    "value: #{@value}, left: #{@left.value if @left}, right: #{@right.value if @right}"
+  end
 end
 
 class BinarySearchTree
@@ -56,6 +60,14 @@ class BinarySearchTree
 
   def delete(value)
     BinarySearchTree.delete!(@root, value)
+  end
+
+  def dfs(target)
+    BinarySearchTree.dfs(@root, target)
+  end
+
+  def level_order_traversal
+    BinarySearchTree.level_order_traversal(@root)
   end
 
   def self.insert!(node, value)
@@ -160,5 +172,50 @@ class BinarySearchTree
     node
   end
 
+  def self.mode(node)
+
+  end
+
+  def self.average(node)
+    
+  end
+
+  def self.dfs(node, target)
+    return node if node.value == target
+
+    children = []
+    #check for children and add them to stack
+    children.push(node.left) if node.left
+    children.push(node.right) if node.right
+
+    #search children
+    children.each do |child|
+      result = BinarySearchTree.dfs(child, target)
+      return result unless result.nil?
+    end
+
+    nil
+  end
+
+  def self.level_order_traversal(node)
+    children = [node]
+    children.each do |child|
+        children.push(child.left) if child.left
+        children.push(child.right) if child.right
+    end
+    children.each { |child| puts child }
+  end
+
+
+
 
 end
+
+tree = BinarySearchTree.new
+[4, 2, 1, 3, 0, 9, 8, 10, 16].each do |n|
+  tree.insert(n)
+end
+
+tree.level_order_traversal
+
+# puts tree.dfs(9)
